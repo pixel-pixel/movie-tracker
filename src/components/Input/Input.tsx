@@ -1,21 +1,20 @@
-import React, { FC, InputHTMLAttributes } from 'react';
+import React, { FC, HTMLAttributes } from 'react';
 import './Input.scss';
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends HTMLAttributes<HTMLInputElement> {
+  name: string,
   error?: string;
 }
 
 export const Input: FC<InputProps> = ({
-  className,
   name,
-  type,
   placeholder,
   error,
+  className,
   ...props
 }) => {
   className = 'input ' + className
   className += error ? ' error' : ''
-  className += ' ' + type
 
   return (
     <label className="input-wrapper">
@@ -23,7 +22,6 @@ export const Input: FC<InputProps> = ({
           className={className}
           id={'input__' + name}
           name={name}
-          type={type}
           placeholder={placeholder}
           {...props}
       />
