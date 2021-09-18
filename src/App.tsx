@@ -1,8 +1,9 @@
 import React from 'react';
+import Button from './components/Button';
 
 function App() {
   return (
-    <h1>Hello, Movie Tracker!</h1>
+    <Button label="click me" />
   );
 }
 
