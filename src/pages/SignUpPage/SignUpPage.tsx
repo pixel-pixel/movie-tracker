@@ -1,7 +1,6 @@
 import React, { FC } from "react";
+import SignUpForm from "../../components/SignUpForm";
 
 export const SignUpPage: FC = () => (
-  <h1>
-    Sign-up page
-  </h1>
+  <SignUpForm />
 )

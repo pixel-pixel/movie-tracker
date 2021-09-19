@@ -8,13 +8,15 @@ export interface InputProps extends HTMLAttributes<HTMLInputElement> {
 
 export const Input: FC<InputProps> = ({
   name,
-  placeholder,
   error,
+  placeholder,
   className,
   ...props
 }) => {
   className = 'input ' + className
   className += error ? ' error' : ''
+
+  placeholder = placeholder ? placeholder : name
 
   return (
     <label className="input-wrapper">
