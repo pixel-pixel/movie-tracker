@@ -4,11 +4,11 @@ import Button from "../Button";
 import Input from "../Input";
 import { registerShema } from "../../common/shemes";
 
-interface SignUpFormValues {
-  name: string | null,
-  email: string | null,
-  password: string | null,
-  password2: string | null
+export interface SignUpFormValues {
+  name: string,
+  email: string,
+  password: string,
+  password2: string
 }
 
 export interface SignUpFormProps {
@@ -17,10 +17,10 @@ export interface SignUpFormProps {
 
 export const SignUpForm: FC<SignUpFormProps> = ({ onSubmit }) => {
   const initialValues: SignUpFormValues = {
-    name: null,
-    email: null,
-    password: null,
-    password2: null
+    name: '',
+    email: '',
+    password: '',
+    password2: ''
   }
 
   return (
