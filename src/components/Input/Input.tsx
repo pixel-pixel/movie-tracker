@@ -1,9 +1,9 @@
-import React, { FC, HTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes } from 'react';
 import './Input.scss';
 
-export interface InputProps extends HTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string,
-  error?: string;
+  error?: string | null;
 }
 
 export const Input: FC<InputProps> = ({
