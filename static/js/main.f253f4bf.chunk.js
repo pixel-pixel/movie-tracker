@@ -1,2 +1,0 @@
-(this["webpackJsonpmovie-tracker"]=this["webpackJsonpmovie-tracker"]||[]).push([[0],{9:function(e,r,t){"use strict";t.r(r);var c=t(0),n=t.n(c),o=t(3),i=t.n(o),s=t(1);var a=function(){return Object(s.jsx)("h1",{children:"Hello, Movie Tracker!"})};i.a.render(Object(s.jsx)(n.a.StrictMode,{children:Object(s.jsx)(a,{})}),document.getElementById("root"))}},[[9,1,2]]]);
-//# sourceMappingURL=main.f253f4bf.chunk.js.map
