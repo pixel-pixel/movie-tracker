@@ -1,3 +1,4 @@
-import { registerShema } from "./registerShema";
+import { registerShema} from "./registerShema";
+import { loginShema } from "./loginShema";
 
-export { registerShema }
+export { registerShema, loginShema }
