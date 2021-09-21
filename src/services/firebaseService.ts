@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app"
-import { getAuth } from "firebase/auth"
+import { 
+  createUserWithEmailAndPassword, 
+  getAuth, 
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from "firebase/auth"
 
 const app = initializeApp({
   apiKey: "AIzaSyBUMloGU8stnSbFWe38XJXHj_Eqz-dzRJ8",
@@ -10,4 +15,22 @@ const app = initializeApp({
   measurementId: "G-JCTS9HDTG9"
 })
 
-export const firebaseService = getAuth(app)
+const auth = getAuth(app)
+
+const signUp = (email: string, password: string) => {
+  return createUserWithEmailAndPassword(auth, email, password)
+}
+const signIn = (email: string, password: string) => {
+  return signInWithEmailAndPassword(auth, email, password)
+}
+const signOut = () => auth.signOut()
+const onAuthChanged = (func: any) => onAuthStateChanged(auth, func)
+
+const firebaseService ={
+  signUp,
+  signIn,
+  signOut,
+  onAuthChanged
+}
+
+export default firebaseService

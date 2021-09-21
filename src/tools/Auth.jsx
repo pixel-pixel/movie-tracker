@@ -1,13 +1,13 @@
 import { createContext, useEffect, useState } from "react";
-import { firebaseService } from "../services";
+import firebaseService from "../services";
 
-export const AuthContext = createContext(null)
+export const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    firebaseService.onAuthStateChanged(setUser)
+    firebaseService.onAuthChanged(setUser)
   }, [])
 
   return (

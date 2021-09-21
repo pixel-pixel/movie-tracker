@@ -1,1 +1,4 @@
-export { firebaseService } from "./firebaseService"
+import firebaseService from "./firebaseService"
+
+export default firebaseService
+

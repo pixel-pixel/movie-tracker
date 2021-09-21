@@ -4,9 +4,9 @@ import Button from "../Button";
 import Input from "../Input";
 import { loginShema } from "../../common/shemes";
 
-interface SignInFormValues {
-  email: string | null,
-  password: string | null,
+export interface SignInFormValues {
+  email: string,
+  password: string,
 }
   
 export interface SignInFormProps {
@@ -15,8 +15,8 @@ export interface SignInFormProps {
 
 export const SignInForm: FC<SignInFormProps> = ({ onSubmit }) => {
   const initialValues: SignInFormValues = {
-    email: null,
-    password: null,
+    email: '',
+    password: '',
   }
 
   return (
