@@ -3,34 +3,44 @@ import React, { FC, HTMLAttributes } from "react";
 export interface SerialCardProps extends HTMLAttributes<HTMLDivElement> {
   name: string
   image: string
+  summary: string
   genres: string[]
-  status: string
-  rating: number
+  rating: number | string
 }
 
 export const SerialCard: FC<SerialCardProps> = ({
   name, 
   image, 
+  summary,
   genres, 
-  status, 
   rating,
   className,
   ...props
 }) => {
+  const genresString = 'Genres: ' + genres.join(', ')
+  image = image ?? 'https://en.islcollective.com/preview/201506/f/what-a-film-without-popcorn-information-gap-activities-reading-comprehension-e_80462_1.jpg'
+  rating = 'Rating: ' + rating
   className = 'serial-card ' + className
 
-
   return (
-    <div className={className} >
-      <img 
-        className="serial-card__img"
-        src={image} 
-        alt={name}
-      />
-      <h2>{name}</h2>
-      <p>{genres.join()}</p>
-      <p>{"status: " + status}</p>
-      <p>{"rating: " + rating}</p>
+    <div className="card mb-3 w-50">
+      <div className="row g-0">
+        <div className="col-md-4">
+          <img src={image} className="img-fluid rounded-start" alt="..." />
+        </div>
+        <div className="col-md-8">
+          <div className="card-body">
+            <h5 className="card-title">{name}</h5>
+            <p className="card-text" dangerouslySetInnerHTML={{__html: summary}}/>
+            <p className="card-text">
+              <small className="text-muted">{genresString}</small>
+            </p>
+            <p className="card-text">
+              <small className="text-muted">{rating}</small>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

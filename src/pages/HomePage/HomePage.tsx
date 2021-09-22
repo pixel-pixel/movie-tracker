@@ -22,7 +22,12 @@ export const HomePage: FC = () => {
       <Button onClick={() => firebaseService.signOut()} label="sign out" />
       <Search name="search" onChange={onChange}/>
       {series.map(s => (
-        <p>{JSON.stringify(s.image)}</p>
+        <SerialCard 
+          name={s.name}
+          image={s.image?.medium}
+          summary={s.summary}
+          genres={s.genres}
+          rating={s.rating.average} />
       ))}
     </>
   )

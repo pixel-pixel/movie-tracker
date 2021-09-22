@@ -15,7 +15,7 @@ export default interface Series {
     days: string[]
   }
   rating: {
-    avarage: number
+    average: number
   }
   externals: {
     imdb: string
@@ -24,5 +24,5 @@ export default interface Series {
     medium: string
     original: string
   }
-  sumary: string
+  summary: string
 }
