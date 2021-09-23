@@ -1,15 +1,16 @@
 import React, { FC, useCallback } from "react";
-import { RouteComponentProps, withRouter } from "react-router";
+import { useHistory } from "react-router";
 import SignUpForm, { SignUpFormValues } from "../../components/SignUpForm";
 import firebaseService from "../../services";
 
-const SignUpPage: FC<RouteComponentProps> = ({ history }) => {
+const SignUpPage: FC = () => {
+  const history = useHistory()
+
   const onSubmit = useCallback(async(values: SignUpFormValues) => {
     const {email, password} = values
-
     try {
       await firebaseService.signUp(email, password)
-      history.push('/error')
+      history.push('/home')
     } catch (e) {
       alert(e)
     }
@@ -18,4 +19,4 @@ const SignUpPage: FC<RouteComponentProps> = ({ history }) => {
   return <SignUpForm onSubmit={onSubmit}/>
 }
 
-export default withRouter(SignUpPage)
+export default SignUpPage
