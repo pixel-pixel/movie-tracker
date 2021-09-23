@@ -23,7 +23,7 @@ export const SerialCard: FC<SerialCardProps> = ({
   className = 'serial-card ' + className
 
   return (
-    <div className="card mb-3 w-50">
+    <div className="card mb-3 w-100">
       <div className="row g-0">
         <div className="col-md-4">
           <img src={image} className="img-fluid rounded-start" alt="..." />
