@@ -7,7 +7,7 @@ export const SearchPage: FC = () => {
   const series = useFindSeries()
 
   return (  
-    <h1>
+    <>
       {series.map(s => (
         <SerialCard 
           name={s.name}
@@ -16,6 +16,6 @@ export const SearchPage: FC = () => {
           genres={s.genres}
           rating={s.rating.average} />
       ))}
-    </h1>
+    </>
   )
 }
