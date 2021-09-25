@@ -11,31 +11,19 @@ import { PrivateRoute } from './tools/Route';
 
 function App() {
   return (
-    <>
-      <ul>
-        <li>
-          <Link to="/sign-up"> Sign up </Link>
-        </li>
-        <li>
-          <Link to="/sign-in"> Sign in </Link>
-        </li>
-        <li>
-          <Link to="/home"> Home </Link>
-        </li>
-      </ul>
-
+    <div className="w-100 h-100">
       <Switch>
-        <Route exact path="/sign-up" component={SignUpPage} />
-        <Route exact path="/sign-in" component={SignInPage} />
-        <PrivateRoute>
-          <Route path="/home" component={HomePage} />
-          <Route path="/news" component={NewsPage} />
-          <Route path="/search" component={SearchPage} />
+      <Route exact path="/sign-up" component={SignUpPage} />
+      <Route exact path="/sign-in" component={SignInPage} />
+      <PrivateRoute>
+        <Route path="/home" component={HomePage} />
+        <Route path="/news" component={NewsPage} />
+        <Route path="/search" component={SearchPage} />
 
-          <MainBar /> 
-        </PrivateRoute>
-      </Switch>
-    </>
+        <MainBar /> 
+      </PrivateRoute>
+    </Switch>
+    </div>
   );
 }
 
