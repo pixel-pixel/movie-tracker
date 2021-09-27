@@ -10,11 +10,7 @@ export const SeriesList: FC = () => {
     <div className="series-list">
       {series.map(s => (
         <SerialCard 
-          id={s.id}
-          name={s.name}
-          image={s.image?.medium}
-          genres={s.genres}
-          rating={s.rating.average} />
+          serial={s} />
       ))}
     </div>
   )

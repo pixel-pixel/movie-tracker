@@ -1,30 +1,36 @@
 import React, { FC, HTMLAttributes } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { Series } from "../../services/tvmazeService";
 import "./SerialCard.scss"
 
 export interface SerialCardProps extends HTMLAttributes<HTMLDivElement> {
-  id: string
-  name: string
-  image: string
-  genres: string[]
-  rating: number | string
+  serial: Series
 }
 
 export const SerialCard: FC<SerialCardProps> = ({
-  id,
-  name, 
-  image, 
-  genres, 
-  rating,
+  serial,
   className,
   ...props
 }) => {
   const history = useHistory()
+  const dispatch = useDispatch()
 
-  const handleClick = () => history.push('/serial/' + id)
+  const {
+    id,
+    name,
+    image: {original: image = 'https://en.islcollective.com/preview/201506/f/what-a-film-without-popcorn-information-gap-activities-reading-comprehension-e_80462_1.jpg'},
+    rating,
+    genres
+  } = serial
+
   const ratingComponent = rating ? 
     <span className="rating">{rating}</span> : null
-  image = image ?? 'https://en.islcollective.com/preview/201506/f/what-a-film-without-popcorn-information-gap-activities-reading-comprehension-e_80462_1.jpg'
+
+  const handleClick = () => {
+    dispatch({type: 'SET_CURRENT_SERIAL_ID', payload: serial})
+    history.push('/serial/' + id)
+  }
 
   return (
     <div 
