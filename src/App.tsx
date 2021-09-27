@@ -1,29 +1,38 @@
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom'
 import MainBar from './components/MainBar';
-
+import PageChooser from './components/PageChooser';
 import HomePage from './pages/HomePage';
 import NewsPage from './pages/NewsPage';
 import SearchPage from './pages/SearchPage';
+import SerialPage from './pages/SerialPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import { PrivateRoute } from './tools/Route';
 
 function App() {
   return (
-    <div className="w-100 h-100">
-      <Switch>
+    <Switch>
       <Route exact path="/sign-up" component={SignUpPage} />
       <Route exact path="/sign-in" component={SignInPage} />
+    
       <PrivateRoute>
         <Route path="/home" component={HomePage} />
         <Route path="/news" component={NewsPage} />
-        <Route path="/search" component={SearchPage} />
+        <Route path="/search">
+          <PageChooser data={[
+            {label: 'Series', path: '/search/series'},
+            {label: 'Actors', path: '/search/actors'},
+            {label: 'Friends', path: '/search/friends'}
+          ]}/>
 
+          <Route path="/search" component={SearchPage} />
+        </Route>
+
+        <Route path="/serial/:id" component={SerialPage} />
         <MainBar /> 
       </PrivateRoute>
     </Switch>
-    </div>
   );
 }
 

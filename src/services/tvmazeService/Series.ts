@@ -1,5 +1,5 @@
 export default interface Series {
-  id: number
+  id: string
   url: string
   name: string
   type: string

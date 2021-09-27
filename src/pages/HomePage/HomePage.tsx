@@ -23,14 +23,6 @@ export const HomePage: FC = () => {
       </h1>
       <Button onClick={() => firebaseService.signOut()} label="sign out" />
       <Search name="search" onChange={onChange}/>
-      {series.map(s => (
-        <SerialCard 
-          name={s.name}
-          image={s.image?.medium}
-          summary={s.summary}
-          genres={s.genres}
-          rating={s.rating.average} />
-      ))}
     </>
   )
 }

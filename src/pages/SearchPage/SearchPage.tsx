@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import PageChooser from "../../components/PageChooser";
 import SerialCard from "../../components/SerialCard";
 import { useFindSeries } from "../../hooks";
 import SeriesList from "../../layouts/SeriesList";
