@@ -5,6 +5,7 @@ import PageChooser from './components/PageChooser';
 import HomePage from './pages/HomePage';
 import NewsPage from './pages/NewsPage';
 import SearchPage from './pages/SearchPage';
+import SearchUserPage from './pages/SearchUserPage';
 import SerialPage from './pages/SerialPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
@@ -26,6 +27,7 @@ function App() {
             {label: 'Friends', path: '/search/friends'}
           ]}/>
 
+          <Route exact path="/search/friends" component={SearchUserPage} />
           <Route path="/search" component={SearchPage} />
         </Route>
 
