@@ -9,6 +9,7 @@ import SearchUserPage from './pages/SearchUserPage';
 import SerialPage from './pages/SerialPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
+import UserPage from './pages/UserPage';
 import { PrivateRoute } from './tools/Route';
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
       <Route exact path="/sign-in" component={SignInPage} />
     
       <PrivateRoute>
-        <Route path="/home" component={HomePage} />
+        <Route path="/home" component={UserPage} />
         <Route path="/news" component={NewsPage} />
         <Route path="/search">
           <PageChooser data={[
