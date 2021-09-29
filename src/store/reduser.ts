@@ -1,25 +1,33 @@
+import { Series } from "../services/tvmazeService"
+
 export interface State {
   user: any
   userData: any
   findText: string | null
+  currentSerial: Series | null
 }
 
 const initialState: State = {
   user: null,
   userData: null,
-  findText: null
+  findText: null,
+  currentSerial: null
 }
 
 type Action = {
-  type: "SET_FIND_TEXT",
+  type: "SET_FIND_TEXT" | "SET_CURRENT_SERIAL_ID",
   payload: any
 }
 
 export const reduser = (state = initialState, action: Action): State => {
   switch(action.type) {
-    case "SET_FIND_TEXT" : {
+    case "SET_FIND_TEXT": {
       return {...state, findText: action.payload}
-    } default: {
+    } 
+    case "SET_CURRENT_SERIAL_ID": {
+      return {...state, currentSerial: action.payload}
+    }
+    default: {
       return state
     }
   }  

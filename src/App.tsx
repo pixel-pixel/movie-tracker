@@ -5,9 +5,11 @@ import PageChooser from './components/PageChooser';
 import HomePage from './pages/HomePage';
 import NewsPage from './pages/NewsPage';
 import SearchPage from './pages/SearchPage';
+import SearchUserPage from './pages/SearchUserPage';
 import SerialPage from './pages/SerialPage';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
+import UserPage from './pages/UserPage';
 import { PrivateRoute } from './tools/Route';
 
 function App() {
@@ -17,7 +19,7 @@ function App() {
       <Route exact path="/sign-in" component={SignInPage} />
     
       <PrivateRoute>
-        <Route path="/home" component={HomePage} />
+        <Route path="/home" component={UserPage} />
         <Route path="/news" component={NewsPage} />
         <Route path="/search">
           <PageChooser data={[
@@ -26,6 +28,7 @@ function App() {
             {label: 'Friends', path: '/search/friends'}
           ]}/>
 
+          <Route exact path="/search/friends" component={SearchUserPage} />
           <Route path="/search" component={SearchPage} />
         </Route>
 

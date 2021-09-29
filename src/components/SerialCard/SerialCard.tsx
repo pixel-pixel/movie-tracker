@@ -1,4 +1,5 @@
 import React, { FC, HTMLAttributes } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import "./SerialCard.scss"
 
@@ -20,8 +21,11 @@ export const SerialCard: FC<SerialCardProps> = ({
   ...props
 }) => {
   const history = useHistory()
+  const dispatch = useDispatch()
 
-  const handleClick = () => history.push('/serial/' + id)
+  const handleClick = () => {
+    history.push('/serial/' + id)
+  }
   const ratingComponent = rating ? 
     <span className="rating">{rating}</span> : null
   image = image ?? 'https://en.islcollective.com/preview/201506/f/what-a-film-without-popcorn-information-gap-activities-reading-comprehension-e_80462_1.jpg'

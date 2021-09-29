@@ -1,4 +1,4 @@
-export default interface Series {
+export default interface Serial {
   id: string
   url: string
   name: string
