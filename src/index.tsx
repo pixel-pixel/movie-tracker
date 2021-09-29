@@ -4,19 +4,16 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from "react-redux"
 
 import App from './App';
-import { AuthProvider } from './tools/Auth';
 
 import 'bootstrap/dist/css/bootstrap.css'
-import { store } from './store/store';
+import store from './store';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <AuthProvider>
-        <Router>
-          <App />
-        </Router>
-      </AuthProvider>
+      <Router>
+        <App />
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

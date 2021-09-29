@@ -2,6 +2,8 @@ import React, { FC, HTMLAttributes } from "react";
 import Button from "../../components/Button";
 import UserCard from "../../components/UserCard";
 import { UserInfo } from "../../components/UserInfo/UserInfo";
+import { useTSelector } from "../../hooks";
+import { useActions } from "../../hooks/useActions";
 import firebaseService from "../../services";
 import "./UserAccount.scss"
 
@@ -11,7 +13,9 @@ export const UserAccount:FC<UserAccountProps> = ({
   className,
   ...props
 }) => {
-  const handleSignOutClick = () => firebaseService.signOut()
+  const { user } = useTSelector(state => state.user)
+  const { signOut } = useActions()
+
 
   className = 'user-account ' + className
 
@@ -19,7 +23,7 @@ export const UserAccount:FC<UserAccountProps> = ({
     <div className={className} {...props}>
       <UserCard />
       <UserInfo />
-      <Button label="SIGN OUT" onClick={handleSignOutClick}/>
+      <Button label="SIGN OUT" onClick={signOut}/>
     </div>
   )
 }

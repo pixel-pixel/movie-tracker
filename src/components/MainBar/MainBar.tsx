@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import Search from "../Search";
 
 import "./MainBar.scss"
-import { State } from "../../store";
+// import { State } from "../../Oldstore";
 
 export interface MainBarProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -17,13 +17,13 @@ export const MainBar: FC<MainBarProps> = ({
   ...props
 }) => {
   const history = useHistory()
-  const dispatch = useDispatch()
-  const findText = useSelector<State, State['findText']>(state => state.findText)
+  // const dispatch = useDispatch()
+  // const findText = useSelector<State, State['findText']>(state => state.findText)
 
   const onNewspaperClick = () => history.push('/news')
   const onSearchClick = () => { 
     history.push('/search')
-    dispatch({type: 'SET_FIND_TEXT', payload: ''})
+    // dispatch({type: 'SET_FIND_TEXT', payload: ''})
   }
   const onHomeClick = () => history.push('/home')
 
@@ -31,7 +31,7 @@ export const MainBar: FC<MainBarProps> = ({
 
   return (
     <div className={className} {...props}>
-      {
+      {/* {
       findText !== null ? 
       <Search 
       autoFocus
@@ -50,7 +50,7 @@ export const MainBar: FC<MainBarProps> = ({
         size={32}
         onClick={onHomeClick} />
       </>
-    }
+    } */}
     </div>
   )
 }
