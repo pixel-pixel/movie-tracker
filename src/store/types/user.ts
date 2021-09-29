@@ -23,3 +23,9 @@ export type UserAction =
   | FetchUserSuccessAction
   | FetchUserErrorAction
   | ForgetUserAction
+
+export interface UserState {
+  user: User | null
+  error: string | null
+  loading: boolean
+}

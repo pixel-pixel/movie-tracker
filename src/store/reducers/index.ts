@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
+import { serialReduser } from "./serialReduser";
 import { userReducer } from "./userReduser";
 
 const rootReduser = combineReducers({
-  user: userReducer
+  user: userReducer,
+  serial: serialReduser
 })
 
 export default rootReduser 

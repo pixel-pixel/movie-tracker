@@ -1,11 +1,5 @@
 import { User } from "../../common/intarfaces"
-import { UserAction } from "../types"
-
-interface UserState {
-  user: User | null
-  error: string | null
-  loading: boolean
-}
+import { UserAction, UserState } from "../types/user"
 
 const initialState: UserState = {
   user: null,
@@ -25,7 +19,7 @@ export const userReducer = (state = initialState, action: UserAction): UserState
       return {error: action.payload, loading: false, user: null}
 
     case "FORGET_USER":
-      return {loading: false, user:  null, error: null}
+      return {loading: false, user: null, error: null}
 
     default:
       return state

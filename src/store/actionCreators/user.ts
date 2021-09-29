@@ -2,7 +2,7 @@ import { Dispatch } from "react";
 import { SignUpValues } from "../../common/intarfaces";
 import { SignInValues } from "../../common/intarfaces";
 import firebaseService from "../../services";
-import { UserAction } from "../types";
+import { UserAction } from "../types/user";
 
 export const signUp = ({name, email, password, password2}: SignUpValues) => 
 async (dispatch: Dispatch<UserAction>) => {
