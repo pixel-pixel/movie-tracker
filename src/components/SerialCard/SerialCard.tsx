@@ -1,6 +1,8 @@
 import React, { FC, HTMLAttributes } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
+import { useTSelector } from "../../hooks";
+import { useActions } from "../../hooks/useActions";
 import "./SerialCard.scss"
 
 export interface SerialCardProps extends HTMLAttributes<HTMLDivElement> {
@@ -22,8 +24,14 @@ export const SerialCard: FC<SerialCardProps> = ({
 }) => {
   const history = useHistory()
   const dispatch = useDispatch()
+  const { user } = useTSelector(state => state.user)
+  const { error } = useTSelector(state => state.serialLike)
+  const { addSerial } = useActions()
+
+  if(error) console.log(error)
 
   const handleClick = () => {
+    console.log(user)
     history.push('/serial/' + id)
   }
   const ratingComponent = rating ? 

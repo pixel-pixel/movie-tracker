@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app"
-import { getDatabase, ref, set, get, child, update, remove } from "firebase/database"
+import { getDatabase, ref, set, get, child, update, remove, onValue } from "firebase/database"
 import { 
   createUserWithEmailAndPassword, 
   getAuth, 
@@ -21,22 +21,47 @@ const app = initializeApp({
 const auth = getAuth(app)
 const db = getDatabase()
 
-const signUp = async(name: string, email: string, password: string) => {
+const signUp = async(
+  name: string, 
+  email: string, 
+  password: string, 
+  onUpdate: (user: User) => void
+  ) => {
   const authRes = await createUserWithEmailAndPassword(auth, email, password)
   const id = authRes.user.uid
   const user = new User(id, name)
 
   await set(ref(db, 'Users/' + id), user)
-  return user
+  
+  onValue(ref(db, 'Users/' + id), snap => {
+    onUpdate(snap.val() as User)
+  })
 }
-const signIn = async(email: string, password: string) => {
+
+const signIn = async(
+  email: string, 
+  password: string,
+  onUpdate: (user: User) => void
+  ) => {
   const authRes = await signInWithEmailAndPassword(auth, email, password)
   const id = authRes.user.uid
   const user = await get(child(ref(db), 'Users/' + id))
 
   if (!user.exists()) throw Error("User don't esists")
 
-  return user.val() as User
+  onValue(ref(db, 'Users/' + id), snap => {
+    onUpdate(snap.val() as User)
+  })
+}
+
+const addSerial = (user: User, serialID: string) => {
+  const serialIDs = [...(user.serialIDs ?? []), serialID]
+  return update(ref(db, "Users/" + user.id), {serialIDs})
+}
+
+const removeSerial = (user: User, serialID: string) => {
+  const serialIDs = user.serialIDs.filter(el => el !== serialID)
+  return update(ref(db, "Users/" + user.id), {serialIDs})
 }
 const signOut = () => auth.signOut()
 const onAuthChanged = (func: any) => onAuthStateChanged(auth, func)
@@ -45,7 +70,9 @@ const firebaseService = {
   signUp,
   signIn,
   signOut,
-  onAuthChanged
+  onAuthChanged,
+  addSerial,
+  removeSerial,
 }
 
 export default firebaseService

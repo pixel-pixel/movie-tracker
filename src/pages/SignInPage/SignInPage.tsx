@@ -11,7 +11,7 @@ const SignInPage:FC = () => {
   const { user, loading, error } = useTSelector(state => state.user)
   const { signIn } = useActions()
   useEffect(() => {
-    if (user) history.push('/home')
+    if (user) history.push('/search/series')
   }, [user])
   
   if (error) console.log(error)
