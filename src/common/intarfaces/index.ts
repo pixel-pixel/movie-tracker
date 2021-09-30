@@ -4,4 +4,5 @@ import { SignUpValues } from "./SignUpValues";
 import { SignInValues } from "./SignInValues";
 import { SerialFilter } from "./SerialFilter";
 
-export type { User, Serial, SignUpValues, SignInValues, SerialFilter }
+export { User }
+export type { Serial, SignUpValues, SignInValues, SerialFilter }

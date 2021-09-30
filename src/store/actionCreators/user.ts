@@ -4,19 +4,12 @@ import { SignInValues } from "../../common/intarfaces";
 import firebaseService from "../../services";
 import { UserAction } from "../types/user";
 
-export const signUp = ({name, email, password, password2}: SignUpValues) => 
+export const signUp = ({name, email, password}: SignUpValues) => 
 async (dispatch: Dispatch<UserAction>) => {
   try {
     dispatch({type: "FETCH_USER"})
-    await firebaseService.signUp(email, password)
-    //TODO add user to db
-    dispatch({type: "FETCH_USER_SUCCESS", payload: {
-      name,
-      iamgeURL: null,
-      filmsIDs: [],
-      actorsIDs: [],
-      friendsIDs: []
-    }})    
+    const user = await firebaseService.signUp(name, email, password)
+    dispatch({type: "FETCH_USER_SUCCESS", payload: user})    
   } catch (error) {
     dispatch({type: "FETCH_USER_ERROR", payload: error})
   }
@@ -30,11 +23,14 @@ async (dispatch: Dispatch<UserAction>) => {
     //TODO get user from db
     await firebaseService.signIn(email, password)
     dispatch({type: "FETCH_USER_SUCCESS", payload: {
+      id: 0,
       name: "fd", 
+      email,
       iamgeURL: null,
-      filmsIDs: [],
-      actorsIDs: [],
-      friendsIDs: []
+      serialIds: [],
+      actorIDs: [],
+      friendIDs: [],
+      news: []
     }})
   } catch (error) {
     dispatch({type: "FETCH_USER_ERROR", payload: error})
