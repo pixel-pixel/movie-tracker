@@ -9,8 +9,8 @@ const rootReduser = combineReducers({
   user: userReducer,
   serialSearch: serialsSearchReduser,
   serial: serialReduser,
-  serialLike: serialLikeReduser
-  usersGet: usersGetReduser
+  serialLike: serialLikeReduser,
+  usersGet: usersGetReduser,
 })
 
 export default rootReduser 

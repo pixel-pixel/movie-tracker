@@ -14,7 +14,7 @@ export const usersGetReduser = (state = initialState, action: UsersGetAction): U
     case "GET_USERS_SUCCESS":
       return {users: action.payload, loading: false, error: null}
 
-    case "GET_USERS_Error":
+    case "GET_USERS_ERROR":
       return {users: [], loading: false, error: action.payload}
 
     default:

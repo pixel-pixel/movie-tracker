@@ -63,6 +63,19 @@ const removeSerial = (user: User, serialID: string) => {
   const serialIDs = user.serialIDs.filter(el => el !== serialID)
   return update(ref(db, "Users/" + user.id), {serialIDs})
 }
+
+const getAllUsers = async() => {
+  const usersObj = await (await get(child(ref(db), 'Users/'))).val()
+  const userArr = []
+
+  for(let key in usersObj) {
+    userArr.push(usersObj[key])
+  }
+
+  console.log(userArr)
+  return userArr as User[]
+}
+
 const signOut = () => auth.signOut()
 const onAuthChanged = (func: any) => onAuthStateChanged(auth, func)
 
@@ -73,6 +86,7 @@ const firebaseService = {
   onAuthChanged,
   addSerial,
   removeSerial,
+  getAllUsers,
 }
 
 export default firebaseService
