@@ -21,7 +21,7 @@ export const UserAccount:FC<UserAccountProps> = ({
 
   return (
     <div className={className} {...props}>
-      <UserCard />
+      <UserCard user={user}/>
       <UserInfo />
       <Button label="SIGN OUT" onClick={signOut}/>
     </div>
