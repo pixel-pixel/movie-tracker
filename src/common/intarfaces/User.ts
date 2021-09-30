@@ -1,13 +1,3 @@
-// export interface User {
-//   id: number
-//   name: string
-//   iamgeURL: string | null
-//   serialIds: string[]
-//   actorIDs: string[]
-//   friendIDs: string[]
-//   news: {userID: number, serialID: number}[]
-// }
-
 export class User {
   id: string
   name: string
