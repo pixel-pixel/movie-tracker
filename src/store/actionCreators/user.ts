@@ -20,18 +20,8 @@ export const signIn = ({email, password}: SignInValues) =>
 async (dispatch: Dispatch<UserAction>) => {
   try {
     dispatch({type: "FETCH_USER"})
-    //TODO get user from db
-    await firebaseService.signIn(email, password)
-    dispatch({type: "FETCH_USER_SUCCESS", payload: {
-      id: 0,
-      name: "fd", 
-      email,
-      iamgeURL: null,
-      serialIds: [],
-      actorIDs: [],
-      friendIDs: [],
-      news: []
-    }})
+    const user = await firebaseService.signIn(email, password)
+    dispatch({type: "FETCH_USER_SUCCESS", payload: user})
   } catch (error) {
     dispatch({type: "FETCH_USER_ERROR", payload: error})
   }

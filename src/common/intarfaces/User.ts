@@ -9,19 +9,17 @@
 // }
 
 export class User {
-  id: number
+  id: string
   name: string
-  email: string
   iamgeURL: string | null
   serialIds: string[]
   actorIDs: string[]
   friendIDs: string[]
   news: {userID: number, serialID: number}[]
 
-  constructor(id: number, name: string, email: string) {
+  constructor(id: string, name: string) {
     this.id = id
     this.name = name
-    this.email = email
     this.iamgeURL = null
     this.serialIds = []
     this.actorIDs = []
