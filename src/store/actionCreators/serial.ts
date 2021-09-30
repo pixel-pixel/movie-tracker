@@ -1,21 +1,15 @@
 import { Dispatch } from "react";
-import { SerialFilter } from "../../common/intarfaces";
+import { number } from "yup/lib/locale";
 import tvmazeService from "../../services/tvmazeService";
 import { SerialAction } from "../types/serial";
 
-export const addSerialSearchFilter = 
-(filter: SerialFilter): SerialAction => ({type: "ADD_FILTER", payload: filter})
-
-export const removeSerialSearchFilter =
-(): SerialAction => ({type: "REMOVE_FILTER"})
-
-export const searchSerial = (name: string) =>
+export const getSerialbyId = (id: number) =>
 async(dispatch: Dispatch<SerialAction>) => {
   try {
-    dispatch({type: "SEARCH_SERIALS"})
-    const series = await tvmazeService.searchSeries(name)
-    dispatch({type: "SEARCH_SERIALS_SUCCESS", payload: series})
+    dispatch({type: "FETCH_SERIAL"})
+    const serial = await tvmazeService.getSerialById(id)
+    dispatch({type: "FETCH_SERIAL_SUCCESS", payload: serial})
   } catch (error) {
-    dispatch({type: "SEARCH_SERIALS_ERROR", payload: error})
+    dispatch({type: "FETCH_SERIAL_ERROR", payload: error})
   }
 }

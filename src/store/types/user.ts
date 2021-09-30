@@ -1,5 +1,17 @@
 import { User } from "../../common/intarfaces"
 
+export interface UserState {
+  user: User | null
+  error: string | null
+  loading: boolean
+}
+
+export type UserAction = 
+  | FetchUserAction
+  | FetchUserSuccessAction
+  | FetchUserErrorAction
+  | ForgetUserAction
+
 interface FetchUserAction {
   type: "FETCH_USER"
 }
@@ -16,16 +28,4 @@ interface FetchUserErrorAction {
 
 interface ForgetUserAction {
   type: "FORGET_USER"
-}
-
-export type UserAction = 
-  | FetchUserAction
-  | FetchUserSuccessAction
-  | FetchUserErrorAction
-  | ForgetUserAction
-
-export interface UserState {
-  user: User | null
-  error: string | null
-  loading: boolean
 }

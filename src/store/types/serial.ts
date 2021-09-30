@@ -1,38 +1,26 @@
-import { Serial, SerialFilter } from "../../common/intarfaces";
+import { Serial } from "../../common/intarfaces";
 
 export interface SerialState {
-  filter: SerialFilter | null
-  series: Serial[]
+  serial: Serial | null
   loading: boolean
   error: any
 }
 
-interface AddFilterAction {
-  type: "ADD_FILTER"
-  payload: SerialFilter
+export type SerialAction =
+  | FetchSerialAction
+  | FetchSerialSuccessAction
+  | FetchSerialErrorAction
+
+interface FetchSerialAction {
+  type: "FETCH_SERIAL"
 }
 
-interface RemoveFilterAction {
-  type: "REMOVE_FILTER"
+interface FetchSerialSuccessAction {
+  type: "FETCH_SERIAL_SUCCESS"
+  payload: Serial
 }
 
-interface SearchSerialsAction {
-  type: "SEARCH_SERIALS"
-}
-
-interface SearchSerialsSuccessAction {
-  type: "SEARCH_SERIALS_SUCCESS"
-  payload: Serial[]
-}
-
-interface SearchSerialsErrorAction {
-  type: "SEARCH_SERIALS_ERROR"
+interface FetchSerialErrorAction {
+  type: "FETCH_SERIAL_ERROR"
   payload: any
 }
-
-export type SerialAction =
-  | AddFilterAction
-  | RemoveFilterAction
-  | SearchSerialsAction
-  | SearchSerialsSuccessAction
-  | SearchSerialsErrorAction

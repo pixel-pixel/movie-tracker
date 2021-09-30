@@ -6,14 +6,10 @@ import { loginShema } from "../../common/shemes";
 import Title from "../Title";
 import Text from "../Text";
 import "./SignInForm.scss"
-
-export interface SignInFormValues {
-  email: string,
-  password: string,
-}
+import { SignInValues } from "../../common/intarfaces";
   
 export interface SignInFormProps extends HTMLAttributes<HTMLDivElement> {
-  onFormSubmit: (values: SignInFormValues) => void
+  onFormSubmit: (values: SignInValues) => void
 }
 
 export const SignInForm: FC<SignInFormProps> = ({ 
@@ -21,7 +17,7 @@ export const SignInForm: FC<SignInFormProps> = ({
   className,
   ...props
  }) => {
-  const initialValues: SignInFormValues = {
+  const initialValues: SignInValues = {
     email: '',
     password: '',
   }

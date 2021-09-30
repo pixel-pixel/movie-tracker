@@ -6,16 +6,10 @@ import { registerShema } from "../../common/shemes";
 import "./SignUpForm.scss"
 import Title from "../Title";
 import Text from "../Text";
-
-export interface SignUpFormValues {
-  name: string,
-  email: string,
-  password: string,
-  password2: string
-}
+import { SignUpValues } from "../../common/intarfaces";
 
 export interface SignUpFormProps extends HTMLAttributes<HTMLDivElement> {
-  onFormSubmit: (values: SignUpFormValues) => void
+  onFormSubmit: (values: SignUpValues) => void
 }
 
 export const SignUpForm: FC<SignUpFormProps> = ({ 
@@ -23,7 +17,7 @@ export const SignUpForm: FC<SignUpFormProps> = ({
   className,
   ...props 
 }) => {
-  const initialValues: SignUpFormValues = {
+  const initialValues: SignUpValues = {
     name: '',
     email: '',
     password: '',
@@ -41,7 +35,9 @@ export const SignUpForm: FC<SignUpFormProps> = ({
 
         <Form>
           <Title label="Sign up" className="mb-2"/>
-          <Text label="Fill in the fields to create your account" className="mb-4"/>
+          <Text 
+            label="Fill in the fields to create your account." 
+            className="mb-4" />
 
           <Field 
             name="name"

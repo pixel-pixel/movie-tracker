@@ -8,12 +8,12 @@ import SeriesList from "../../layouts/SeriesList";
 import "./SearchPage.scss"
 
 export const SearchPage: FC = () => {
-  const { series, loading, error } = useTSelector(state => state.serial)
-  const { searchSerial } = useActions()
+  const { series, loading, error } = useTSelector(state => state.serialSearch)
+  const { searchSerials } = useActions()
 
   const handleChange = (e: any) => {
     const name = e.target.value
-    searchSerial(name)
+    searchSerials(name)
   }
 
   if (error) console.log(error)

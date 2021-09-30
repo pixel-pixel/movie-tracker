@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect } from "react";
 import { useHistory } from "react-router";
-import SignInForm, { SignInFormValues } from "../../components/SignInForm";
+import SignInForm from "../../components/SignInForm";
 import { useTSelector } from "../../hooks";
 import { useActions } from "../../hooks/useActions";
 import firebaseService from "../../services";
@@ -11,7 +11,6 @@ const SignInPage:FC = () => {
   const { user, loading, error } = useTSelector(state => state.user)
   const { signIn } = useActions()
   useEffect(() => {
-    console.log(loading)
     if (user) history.push('/home')
   }, [user])
   

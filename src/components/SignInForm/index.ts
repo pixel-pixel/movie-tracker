@@ -1,4 +1,4 @@
-import { SignInForm, SignInFormProps, SignInFormValues } from "./SignInForm";
+import { SignInForm, SignInFormProps } from "./SignInForm";
 
 export default SignInForm
-export type { SignInFormProps, SignInFormValues }
+export type { SignInFormProps }

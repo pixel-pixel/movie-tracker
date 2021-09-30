@@ -1,15 +1,27 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useHistory, useLocation, useParams } from "react-router";
+import { useTSelector } from "../../hooks";
+import { useActions } from "../../hooks/useActions";
 import SerialLayout from "../../layouts/SerialLayout";
 import tvmazeService from "../../services/tvmazeService";
-// import { State } from "../../Oldstore";
 
 export const SerialPage: FC = () => {
-  // const serial = useSelector<State, State['currentSerial']>(state => state.currentSerial)
-  // console.log(serial)
+  const { serial, loading, error } = useTSelector(state => state.serial)
+  const { getSerialbyId } = useActions()
+  const { pathname } = useLocation()
+  useEffect(() => {
+    const id = pathname.split('/').slice(-1)[0]
+    getSerialbyId(parseInt(id))
+  }, [pathname])
 
-  return (<p>kek</p>
-    // <SerialLayout serial={serial}/>
+  if (error) console.log(error)
+
+  return (
+    <div className="serial-page">
+      {loading ?
+        <p>loading...</p> :
+        <SerialLayout serial={serial}/>}
+    </div>
   )
 }

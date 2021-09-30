@@ -1,7 +1,9 @@
 import * as UserActionCreators from "./user"
-import * as SerialActionCreators from "./serial"
+import * as SerialsSearchActionCreators from "./serialSearch"
+import * as SerialActionCreator from './serial'
 
 export default {
   ...UserActionCreators,
-  ...SerialActionCreators
+  ...SerialsSearchActionCreators,
+  ...SerialActionCreator,
 }
