@@ -1,25 +1,28 @@
-import React, { FC, useCallback } from "react";
+import { stat } from "fs";
+import React, { FC, useCallback, useEffect } from "react";
 import { useHistory } from "react-router";
-import SignUpForm, { SignUpFormValues } from "../../components/SignUpForm";
+import { SignUpValues } from "../../common/intarfaces";
+import SignUpForm from "../../components/SignUpForm";
+import { useTSelector } from "../../hooks";
+import { useActions } from "../../hooks/useActions";
 import firebaseService from "../../services";
 import "./SignUpPage.scss"
 
 const SignUpPage: FC = () => {
   const history = useHistory()
+  const { user, error, loading } = useTSelector(state => state.user)
+  const { signUp } = useActions()
+  useEffect(() => {
+    if (user) history.push('/home')
+  }, [user])
 
-  const handleSubmit = useCallback(async(values: SignUpFormValues) => {
-    const {email, password} = values
-    try {
-      await firebaseService.signUp(email, password)
-      history.push('/home')
-    } catch (e) {
-      alert(e)
-    }
-  }, [history])
+  if (error) console.log(error)
 
   return (
     <div className="sign-up-page">
-      <SignUpForm onFormSubmit={handleSubmit}/>
+      {loading ? 
+        <p>loading</p> : 
+        <SignUpForm onFormSubmit={signUp} />}
     </div>
   )
 }

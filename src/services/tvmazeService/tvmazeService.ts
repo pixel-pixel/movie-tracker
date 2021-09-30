@@ -15,9 +15,7 @@ async function searchSeries(name: string | null) {
   return seriesArr
 }
 
-async  function getSerialById(id: string | null) {
-  if (!id) return null
-
+async  function getSerialById(id: number) {
   const response = await fetch(getSerialURL + id)
   const json: Series = await response.json()
   return json

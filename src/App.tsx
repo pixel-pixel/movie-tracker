@@ -18,7 +18,7 @@ function App() {
       <Route exact path="/sign-up" component={SignUpPage} />
       <Route exact path="/sign-in" component={SignInPage} />
     
-      <PrivateRoute>
+    
         <Route path="/home" component={UserPage} />
         <Route path="/news" component={NewsPage} />
         <Route path="/search">
@@ -34,7 +34,7 @@ function App() {
 
         <Route path="/serial/:id" component={SerialPage} />
         <MainBar /> 
-      </PrivateRoute>
+    
     </Switch>
   );
 }

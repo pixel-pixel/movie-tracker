@@ -1,11 +1,10 @@
-import { useContext } from "react"
 import { Redirect, Route } from "react-router"
-import { AuthContext } from "./Auth"
+import { useTSelector } from "../hooks/useTSelector"
 
 export const PrivateRoute = ({ children, ...props }) => {
-  const {user} = useContext(AuthContext)
+  const { user } = useTSelector(state => state.user)
   
-  return user ? 
+  return !!user ?
   <Route> {children} </Route> :
   <Redirect to="/sign-in" />
 }
