@@ -64,6 +64,16 @@ const removeSerial = (user: User, serialID: string) => {
   return update(ref(db, "Users/" + user.id), {serialIDs})
 }
 
+const addFriend = (me: User, userID: string) => {
+  const friendIDs = [...(me.friendIDs ?? []), userID]
+  return update(ref(db, "Users/" + me.id), {friendIDs})
+}
+
+const removeFriend = (me: User, userId: string) => {
+  const friendIDs = me.friendIDs.filter(f => f !== userId)
+  return update(ref(db, "Users/" + me.id), {friendIDs})
+}
+
 const getAllUsers = async() => {
   const usersObj = await (await get(child(ref(db), 'Users/'))).val()
   const userArr = []
@@ -87,6 +97,8 @@ const firebaseService = {
   addSerial,
   removeSerial,
   getAllUsers,
+  addFriend,
+  removeFriend,
 }
 
 export default firebaseService
