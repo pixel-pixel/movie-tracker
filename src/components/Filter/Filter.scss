@@ -1,9 +1,28 @@
 .filter {
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
-  color: white;
+
+  color: #9e9e9e;
+  font-weight: bold;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 3em;
+    margin: .3em;
+    border-radius: 1.5em;
+
+    span {
+      margin: 0 1em;
+      font-size: 1.25em;
+    }
+  }
 
   &__item_selected {
-    background-color: yellowgreen;
+    color: white;
+    background-color: #c62828;
   }
 
 

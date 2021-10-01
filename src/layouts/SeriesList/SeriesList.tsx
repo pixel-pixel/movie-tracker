@@ -23,7 +23,6 @@ export const SeriesList: FC<SeriesListProps> = ({
   const { series } = useTSelector(s => s.search)
   const { searchSerials } = useActions() 
   useEffect(() => {
-    console.log(9)
     searchSerials(nameFilter(name), genresFilter(genres), ...filters)
   }, [name, genres, ...filters])
 
@@ -37,16 +36,23 @@ export const SeriesList: FC<SeriesListProps> = ({
   return (  
     <div className={className}>
       <Search name="film-search" onChange={handleChange} />
-      <FilterComponent by={['drama', 'comedy', 'romance']} selected={genres} setSelected={setGenres} />
-
-      {series.map(s => (
-        <SerialCard 
-          id={s.id}
-          name={s.name}
-          image={s.image?.medium}
-          genres={s.genres}
-          rating={s.rating.average} />
-      ))}
+      <FilterComponent by={[
+        'Drama', 'Comedy', 'Romance', 
+        'Science-Fiction', 'Thriller', 
+        'Crime', 'Action', 'Fantasy', 
+        'Horror', 'Adventure', 'Anime',
+        'Family', 'Mystery', 'Music'
+        ]} selected={genres} setSelected={setGenres} />
+      <div className="series-list__container">
+        {series.map(s => (
+          <SerialCard 
+            id={s.id}
+            name={s.name}
+            image={s.image?.medium}
+            genres={s.genres}
+            rating={s.rating.average} />
+        ))}
+      </div>
     </div>
   )
 }

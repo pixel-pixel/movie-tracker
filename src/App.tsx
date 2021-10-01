@@ -22,13 +22,15 @@ function App() {
         <Route path="/home" component={UserPage} />
         <Route path="/news" component={NewsPage} />
         <Route path="/search">
+          {
+          //TODO use links
+        }
           <PageChooser data={[
             {label: 'Series', path: '/search/series'},
-            {label: 'Actors', path: '/search/actors'},
-            {label: 'Friends', path: '/search/friends'}
+            {label: 'Users', path: '/search/users'}
           ]}/>
 
-          <Route exact path="/search/friends" component={SearchUserPage} />
+          <Route exact path="/search/users" component={SearchUserPage} />
           <Route path="/search" component={SearchSeriesPage} />
         </Route>
 

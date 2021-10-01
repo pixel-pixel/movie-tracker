@@ -15,9 +15,8 @@ export const Filter: FC<FilterProps> = ({
   ...props
 }) => {
   const handleClick = useCallback((e: any) => {
-    
     const text = e.target.innerText
-    console.log(text)
+
     selected.includes(text) ?
         setSelected(selected.filter(i => i !== text)) :
         setSelected([...selected, text])
@@ -25,13 +24,13 @@ export const Filter: FC<FilterProps> = ({
 
   const components = by.map(e => {
     const className = selected.includes(e) ?
-      'filter__item_selected' : 'filter__item'
+      'filter__item filter__item_selected' : 'filter__item'
 
     return (
       <div 
         className={className}
         onClick={handleClick}>
-        <p>{ e }</p>
+        <span>{ e }</span>
       </div>
     )
   })
