@@ -8,11 +8,11 @@ obj => {
   return serialNormalName.startsWith(normalName) || serialNormalName.includes(normalName)
 }
 
-export const genresFilter = (...genres: string[]): Filter<Serial> =>
+export const genresFilter = (genres: string[]): Filter<Serial> =>
 serial => {
   const serialG = serial.genres.map(g => g.toLowerCase())
   const normalG = genres.map(g => g.toLowerCase())
 
-  return serialG.some(g => normalG.includes(g))
+  return serialG.some(g => normalG.includes(g)) || normalG.length === 0
 }
   
