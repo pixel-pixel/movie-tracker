@@ -24,6 +24,7 @@ function App() {
     <Switch>
       <Route exact path="/sign-up" component={SignUpPage} />
       <Route exact path="/sign-in" component={SignInPage} />
+      <Route exact path="/movie-tracker" component={SignInPage} />
     
       <Route path='/'>
         {!!user ? <Route path="/news" component={NewsPage} /> : null}
