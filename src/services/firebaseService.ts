@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged
 } from "firebase/auth"
-import { User } from "../common/intarfaces"
+import { Filter, User } from "../common/intarfaces"
 
 const app = initializeApp({
   apiKey: "AIzaSyBUMloGU8stnSbFWe38XJXHj_Eqz-dzRJ8",
@@ -74,15 +74,16 @@ const removeFriend = (me: User, userId: string) => {
   return update(ref(db, "Users/" + me.id), {friendIDs})
 }
 
-const getAllUsers = async() => {
+const searchUsers = async(...filters: Filter<User>[]) => {
   const usersObj = await (await get(child(ref(db), 'Users/'))).val()
   const userArr = []
 
   for(let key in usersObj) {
-    userArr.push(usersObj[key])
+    const user = usersObj[key]
+    if (filters.every( f => f(user) )) userArr.push(user)
+    if (userArr.length >= 40) break
   }
 
-  console.log(userArr)
   return userArr as User[]
 }
 
@@ -96,7 +97,7 @@ const firebaseService = {
   onAuthChanged,
   addSerial,
   removeSerial,
-  getAllUsers,
+  searchUsers,
   addFriend,
   removeFriend,
 }

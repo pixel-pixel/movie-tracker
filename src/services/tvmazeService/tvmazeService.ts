@@ -1,6 +1,6 @@
 import { range } from "rxjs"
 import { Series } from "."
-import { SerialFilter } from "../../common/intarfaces"
+import { Filter } from "../../common/intarfaces"
 import Serial from "./Series"
 
 const URL = 'https://api.tvmaze.com/'
@@ -10,13 +10,12 @@ const getSerialURL = 'https://api.tvmaze.com/shows/'
 const seriesByPageURL = 'https://api.tvmaze.com/shows?page='
 const LIMIT = 40
 
-async function searchSeries(...filters: SerialFilter[]) {
+async function searchSeries(...filters: Filter<Serial>[]) {
   const res: Serial[] = []
 
   for (let i = 0; i < 230 && res.length !== LIMIT; i++) {
     const response = await fetch(seriesByPageURL + i)
     const jsonArr: Serial[] = await response.json()
-    console.log(jsonArr)
     jsonArr.every(s => {
       if (filters.every( f => f(s) )) res.push(s)
       return res.length !== LIMIT
