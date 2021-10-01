@@ -4,7 +4,7 @@ import { Filter, Serial } from "../../common/intarfaces";
 import FilterComponent from "../../components/Filter";
 import Search from "../../components/Search";
 import SerialCard from "../../components/SerialCard";
-import { useFindSeries, useTSelector } from "../../hooks";
+import { useTSelector } from "../../hooks";
 import { useActions } from "../../hooks/useActions";
 import { genresFilter, nameFilter } from "../../tools/Filters";
 import "./SeriesList.scss"
@@ -32,6 +32,7 @@ export const SeriesList: FC<SeriesListProps> = ({
   }
 
   className = 'series-list ' + className
+  console.log('1')
 
   return (  
     <div className={className}>

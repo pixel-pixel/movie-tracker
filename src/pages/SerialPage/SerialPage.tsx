@@ -7,15 +7,13 @@ import SerialLayout from "../../layouts/SerialLayout";
 import tvmazeService from "../../services/tvmazeService";
 
 export const SerialPage: FC = () => {
-  const { serial, loading, error } = useTSelector(state => state.serial)
+  const { serial, loading } = useTSelector(state => state.serial)
   const { getSerialbyId } = useActions()
   const { pathname } = useLocation()
   useEffect(() => {
     const id = pathname.split('/').slice(-1)[0]
     getSerialbyId(parseInt(id))
   }, [pathname])
-
-  if (error) console.log(error)
 
   return (
     <div className="serial-page">

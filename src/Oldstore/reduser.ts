@@ -1,10 +1,10 @@
-import { Series } from "../services/tvmazeService"
+import { Serial } from "../common/intarfaces"
 
 export interface State {
   user: any
   userData: any
   findText: string | null
-  currentSerial: Series | null
+  currentSerial: Serial | null
 }
 
 const initialState: State = {

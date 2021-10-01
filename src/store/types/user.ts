@@ -2,6 +2,7 @@ import { User } from "../../common/intarfaces"
 
 export interface UserState {
   user: User | null
+  currentUser: User | null
   error: string | null
   loading: boolean
 }
@@ -9,6 +10,7 @@ export interface UserState {
 export type UserAction = 
   | FetchUserAction
   | FetchUserSuccessAction
+  | FetchCurrentUserSuccessAction
   | FetchUserErrorAction
   | ForgetUserAction
 
@@ -18,6 +20,11 @@ interface FetchUserAction {
 
 interface FetchUserSuccessAction {
   type: "FETCH_USER_SUCCESS"
+  payload: User
+}
+
+interface FetchCurrentUserSuccessAction {
+  type: "FETCH_CURRENT_USER_SUCCESS"
   payload: User
 }
 

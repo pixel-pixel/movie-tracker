@@ -20,7 +20,9 @@ export const MainBar: FC<MainBarProps> = ({
   const onNewspaperClick = () => history.push('/news')
   const onSeriesClick = () => history.push('/series')
   const onUsersClick = () => history.push('/users')
-  const onHomeClick = () => history.push('/home')
+  const onHomeClick = () => history.push('/users/' + user?.id)
+  const onSignInClick = () => history.push('/sign-in')
+
 
   className = "main-bar d-flex justify-content-evenly align-items-center " + className
 
@@ -28,9 +30,9 @@ export const MainBar: FC<MainBarProps> = ({
     <div className={className} {...props}>
       {!!user ? 
       <Icons.Newspaper 
-      color="white" 
-      size={32}
-      onClick={onNewspaperClick} /> : null}
+        color="white" 
+        size={32}
+        onClick={onNewspaperClick} /> : null}
       <Icons.Search color="white"
         size={32}
         onClick={onSeriesClick} />
@@ -40,8 +42,10 @@ export const MainBar: FC<MainBarProps> = ({
       {!!user ? 
       <Icons.House color="white"
         size={32}
-        onClick={onHomeClick} /> : null}
-      
+        onClick={onHomeClick} /> : 
+      <Icons.Signpost color="white"
+        size={32}
+        onClick={onSignInClick} />}
     </div>
   )
 }

@@ -1,5 +1,4 @@
-import { useFindSeries } from "./useFindSeries";
-import { useGetSerial } from "./useGetSerial";
 import { useTSelector } from "./useTSelector";
+import { useActions } from "./useActions";
 
-export { useFindSeries, useGetSerial, useTSelector }
+export { useTSelector, useActions }

@@ -25,14 +25,10 @@ export const SerialCard: FC<SerialCardProps> = ({
   const history = useHistory()
   const dispatch = useDispatch()
   const { user } = useTSelector(state => state.user)
-  const { error } = useTSelector(state => state.serialLike)
   const { addSerial } = useActions()
 
-  if(error) console.log(error)
-
   const handleClick = () => {
-    console.log(user)
-    history.push('/serial/' + id)
+    history.push('/series/' + id)
   }
   const ratingComponent = rating ? 
     <span className="rating">{rating}</span> : null

@@ -2,7 +2,7 @@ import { SerialAction, SerialState } from "../types/serial"
 
 const initialState: SerialState = {
   serial: null,
-  loading: false,
+  loading: true,
   error: null
 }
 

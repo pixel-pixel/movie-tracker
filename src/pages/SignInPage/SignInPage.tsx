@@ -1,9 +1,8 @@
-import React, { FC, useCallback, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useHistory } from "react-router";
 import SignInForm from "../../components/SignInForm";
 import { useTSelector } from "../../hooks";
 import { useActions } from "../../hooks/useActions";
-import firebaseService from "../../services";
 import "./SignInPage.scss"
 
 const SignInPage:FC = () => {
@@ -11,16 +10,15 @@ const SignInPage:FC = () => {
   const { user, loading, error } = useTSelector(state => state.user)
   const { signIn } = useActions()
   useEffect(() => {
-    if (user) history.push('/home')
+    if (user) history.push('/users/' + user.id)
   }, [user])
   
   if (error) console.log(error)
 
   return (
     <div className="sign-in-page">
-      {loading ? 
-        <p>loading...</p> :
-        <SignInForm onFormSubmit={signIn} /> }
+     
+        <SignInForm onFormSubmit={signIn} /> 
     </div>
   )
 }
