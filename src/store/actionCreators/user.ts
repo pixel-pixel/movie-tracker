@@ -1,7 +1,7 @@
 import { Dispatch } from "react";
 import { SignUpValues, User } from "../../common/intarfaces";
 import { SignInValues } from "../../common/intarfaces";
-import firebaseService from "../../services";
+import firebaseService from "../../services/firebaseService";
 import { UserAction } from "../types/user";
 
 export const signUp = ({name, email, password}: SignUpValues) => 

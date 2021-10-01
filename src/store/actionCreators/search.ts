@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import { Serial, Filter, User } from "../../common/intarfaces";
-import firebaseService from "../../services";
+import firebaseService from "../../services/firebaseService";
 import tvmazeService from "../../services/tvmazeService";
 import { SearchAction } from "../types/serialsSearch";
 

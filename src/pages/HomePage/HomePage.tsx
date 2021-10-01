@@ -3,9 +3,6 @@ import Button from "../../components/Button";
 import MainBar from "../../components/MainBar";
 import Search from "../../components/Search";
 import SerialCard from "../../components/SerialCard";
-import firebaseService from "../../services";
-import tvmazeService, { Series } from "../../services/tvmazeService";
-import * as Icons from "react-bootstrap-icons"
 
 export const HomePage: FC = () => {
 

@@ -4,7 +4,7 @@ import { Filter, Serial } from "../../common/intarfaces";
 import FilterComponent from "../../components/Filter";
 import Search from "../../components/Search";
 import SerialCard from "../../components/SerialCard";
-import { useFindSeries, useTSelector } from "../../hooks";
+import { useTSelector } from "../../hooks";
 import { useActions } from "../../hooks/useActions";
 import { genresFilter, nameFilter } from "../../tools/Filters";
 import "./SeriesList.scss"

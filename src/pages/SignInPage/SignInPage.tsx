@@ -1,9 +1,8 @@
-import React, { FC, useCallback, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { useHistory } from "react-router";
 import SignInForm from "../../components/SignInForm";
 import { useTSelector } from "../../hooks";
 import { useActions } from "../../hooks/useActions";
-import firebaseService from "../../services";
 import "./SignInPage.scss"
 
 const SignInPage:FC = () => {

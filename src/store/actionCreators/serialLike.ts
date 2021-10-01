@@ -1,7 +1,7 @@
 import { async } from "firebase/node_modules/@firebase/util";
 import { Dispatch } from "react";
 import { User } from "../../common/intarfaces";
-import firebaseService from "../../services";
+import firebaseService from "../../services/firebaseService";
 import { SerialLikeAction } from "../types/serialLike";
 
 export const addSerial = (user: User, serialID: string) => 

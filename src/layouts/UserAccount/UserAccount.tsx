@@ -4,7 +4,6 @@ import UserCard from "../../components/UserCard";
 import { UserInfo } from "../../components/UserInfo/UserInfo";
 import { useTSelector } from "../../hooks";
 import { useActions } from "../../hooks/useActions";
-import firebaseService from "../../services";
 import "./UserAccount.scss"
 
 export interface UserAccountProps extends HTMLAttributes<HTMLDivElement> {}

@@ -1,6 +1,6 @@
 import React, { FC, HTMLAttributes } from "react";
+import { Serial } from "../../common/intarfaces";
 import Button from "../../components/Button";
-import Serial from "../../services/tvmazeService/Series";
 
 export interface SerialLayoutProps extends HTMLAttributes<HTMLDivElement> {
   serial: Serial | null
