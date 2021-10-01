@@ -1,27 +1,15 @@
 import { Serial, SerialFilter } from "../../common/intarfaces";
 
 export interface SerialsSearchState {
-  filter: SerialFilter | null
   series: Serial[]
   loading: boolean
   error: any
 }
 
 export type SerialsSearchAction =
-  | AddFilterAction
-  | RemoveFilterAction
   | SearchSerialsAction
   | SearchSerialsSuccessAction
   | SearchSerialsErrorAction
-
-interface AddFilterAction {
-  type: "ADD_FILTER"
-  payload: SerialFilter
-}
-
-interface RemoveFilterAction {
-  type: "REMOVE_FILTER"
-}
 
 interface SearchSerialsAction {
   type: "SEARCH_SERIALS"

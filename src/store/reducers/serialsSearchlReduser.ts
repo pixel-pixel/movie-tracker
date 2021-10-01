@@ -1,7 +1,6 @@
 import { SerialsSearchAction, SerialsSearchState } from "../types/serialsSearch"
 
 const initialState: SerialsSearchState = {
-  filter: null,
   series: [],
   loading: false,
   error: null
@@ -9,12 +8,6 @@ const initialState: SerialsSearchState = {
 
 export const serialsSearchReduser = (state = initialState, action: SerialsSearchAction): SerialsSearchState => {
   switch (action.type) {
-    case "ADD_FILTER":
-      return {...state, filter: action.payload}
-
-    case "REMOVE_FILTER":
-      return {...state, filter: null}
-
     case "SEARCH_SERIALS":
       return {...state, series: [], loading: true, error: null}
 

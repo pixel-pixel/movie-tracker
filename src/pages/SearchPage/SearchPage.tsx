@@ -1,10 +1,12 @@
 import React, { FC } from "react";
+import { SerialFilter } from "../../common/intarfaces";
 import PageChooser from "../../components/PageChooser";
 import Search from "../../components/Search";
 import SerialCard from "../../components/SerialCard";
 import { useFindSeries, useTSelector } from "../../hooks";
 import { useActions } from "../../hooks/useActions";
 import SeriesList from "../../layouts/SeriesList";
+import { serialNameFilter } from "../../tools/Filters";
 import "./SearchPage.scss"
 
 export const SearchPage: FC = () => {
@@ -12,8 +14,8 @@ export const SearchPage: FC = () => {
   const { searchSerials } = useActions()
 
   const handleChange = (e: any) => {
-    const name = e.target.value
-    searchSerials(name)
+    const name: string = e.target.value
+    searchSerials(serialNameFilter(name))
   }
 
   if (error) console.log(error)
