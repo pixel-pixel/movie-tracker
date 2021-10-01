@@ -20,7 +20,7 @@ export const MainBar: FC<MainBarProps> = ({
   const onNewspaperClick = () => history.push('/news')
   const onSeriesClick = () => history.push('/series')
   const onUsersClick = () => history.push('/users')
-  const onHomeClick = () => history.push('/home')
+  const onHomeClick = () => history.push('/users/' + user?.id)
   const onSignInClick = () => history.push('/sign-in')
 
 
@@ -45,7 +45,7 @@ export const MainBar: FC<MainBarProps> = ({
         onClick={onHomeClick} /> : 
       <Icons.Signpost color="white"
         size={32}
-        onClick={onHomeClick} />}
+        onClick={onSignInClick} />}
     </div>
   )
 }

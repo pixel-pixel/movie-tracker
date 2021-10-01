@@ -1,6 +1,9 @@
 import React, { FC, HTMLAttributes } from "react";
-import { Serial } from "../../common/intarfaces";
+import { useHistory } from "react-router";
+import { Serial, User } from "../../common/intarfaces";
 import Button from "../../components/Button";
+import { useActions, useTSelector } from "../../hooks";
+import "./SerialLayout.scss"
 
 export interface SerialLayoutProps extends HTMLAttributes<HTMLDivElement> {
   serial: Serial | null
@@ -11,6 +14,18 @@ export const SerialLayout: FC<SerialLayoutProps> = ({
   className,
   ...props
 }) => {
+  const { user: me } = useTSelector(s => s.user)
+  const { addSerial, removeSerial } = useActions()
+  const history = useHistory()
+
+  const isLiked = me?.serialIDs?.includes(serial?.id as string) || false
+  const handleRemove = () => removeSerial(me as User, serial?.id as string)
+  const handleAdd = () => {
+    !!me ? 
+    removeSerial(me as User, serial?.id as string) :
+    history.push('/sign-in')
+  }
+
   className = 'serial-layout ' + className
 
   return (
@@ -24,7 +39,10 @@ export const SerialLayout: FC<SerialLayoutProps> = ({
       <div className="serial-layout__image-block">
         <img src={serial?.image.original} />
         <div className="serial-layout__buttons">
-          <Button label="like" />
+          {isLiked ? 
+            <Button label="unlike" onClick={handleRemove} /> :
+            <Button label="like" onClick={handleAdd}/>
+          }
           <Button label="share" />
         </div>
       </div>

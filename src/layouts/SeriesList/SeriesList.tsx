@@ -32,6 +32,7 @@ export const SeriesList: FC<SeriesListProps> = ({
   }
 
   className = 'series-list ' + className
+  console.log('1')
 
   return (  
     <div className={className}>

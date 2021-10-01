@@ -4,7 +4,7 @@ const initialState: SearchState = {
   series: [],
   actors: null,
   users: [],
-  loading: false,
+  loading: true,
   error: null
 }
 
@@ -20,7 +20,7 @@ export const serialsSearchReduser = (state = initialState, action: SearchAction)
       return {...state, users: action.payload, loading: false}
 
     case "SEARCH_ERROR": 
-      return {...state, loading: false, error: true}
+      return {...state, error: true}
 
     default:
       return state

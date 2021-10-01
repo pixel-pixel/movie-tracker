@@ -30,7 +30,8 @@ const signUp = async(
   const authRes = await createUserWithEmailAndPassword(auth, email, password)
   const id = authRes.user.uid
   const user = new User(id, name)
-
+  
+  localStorage.setItem('user', JSON.stringify(user))
   await set(ref(db, 'Users/' + id), user)
   
   onValue(ref(db, 'Users/' + id), snap => {
@@ -47,6 +48,7 @@ const signIn = async(
   const id = authRes.user.uid
   const user = await get(child(ref(db), 'Users/' + id))
 
+  localStorage.setItem('user', JSON.stringify(user))
   if (!user.exists()) throw Error("User don't esists")
 
   onValue(ref(db, 'Users/' + id), snap => {
@@ -87,7 +89,10 @@ const searchUsers = async(...filters: Filter<User>[]) => {
   return userArr as User[]
 }
 
-const signOut = () => auth.signOut()
+const signOut = () => {
+  auth.signOut()
+  localStorage.removeItem('user')
+}
 const onAuthChanged = (func: any) => onAuthStateChanged(auth, func)
 
 const firebaseService = {

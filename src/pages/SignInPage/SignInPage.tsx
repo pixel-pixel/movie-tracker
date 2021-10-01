@@ -10,16 +10,15 @@ const SignInPage:FC = () => {
   const { user, loading, error } = useTSelector(state => state.user)
   const { signIn } = useActions()
   useEffect(() => {
-    if (user) history.push('/home')
+    if (user) history.push('/users/' + user.id)
   }, [user])
   
   if (error) console.log(error)
 
   return (
     <div className="sign-in-page">
-      {loading ? 
-        <p>loading...</p> :
-        <SignInForm onFormSubmit={signIn} /> }
+     
+        <SignInForm onFormSubmit={signIn} /> 
     </div>
   )
 }
