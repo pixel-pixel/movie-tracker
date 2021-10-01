@@ -17,6 +17,7 @@ async function searchSeries(...filters: Filter<Serial>[]) {
     const response = await fetch(seriesByPageURL + i)
     const jsonArr: Serial[] = await response.json()
     jsonArr.every(s => {
+      console.log(s.genres)
       if (filters.every( f => f(s) )) res.push(s)
       return res.length !== LIMIT
     })

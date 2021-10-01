@@ -12,7 +12,7 @@ export const SearchSeriesPage: FC = () => {
 
   return ( 
     <div className="search-page">
-      <SeriesList filters={[genresFilter('comedy')]} />
+      <SeriesList />
     </div> 
   )
 }
