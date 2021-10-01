@@ -24,7 +24,7 @@ export const UserAccount:FC<UserAccountProps> = ({
   return (
     <div className={className} {...props}>
       <UserCard user={user}/>
-      {/* <UserInfo /> */}
+      
     </div>
   )
 }

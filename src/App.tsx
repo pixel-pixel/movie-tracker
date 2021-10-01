@@ -32,6 +32,8 @@ function App() {
 
         <Route exact path="/series/:id" component={SerialPage} />
         <Route exact path="/users/:id" component={UserPage} />
+
+        <Route exact path="/friends/:id" component={SearchUserPage} />
         
         <MainBar /> 
       </Route>

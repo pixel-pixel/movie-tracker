@@ -23,7 +23,13 @@ export const UserCard: FC<UserCardPrpos> = ({
   const isFriend = me?.friendIDs?.includes(id) ?? false
   const isMe = me?.id === user?.id
 
-  const handleFriend = () => {
+  const handleClick = (e: any) => {
+    history.push('/users/' + id)
+  }
+  const handleFriend = (e: any) => {
+    e.stopPropagation()
+    if(!me) history.push('/sign-in')
+
     if(me !== null && user !== null) isFriend ?
       removeFriend(me, user.id) :
       addFriend(me, user.id)
@@ -36,7 +42,10 @@ export const UserCard: FC<UserCardPrpos> = ({
   className = 'user-card ' + className
 
   return (
-    <div className={className} {...props}>
+    <div 
+      className={className} 
+      onClick={handleClick}
+      {...props}>
       <img src={imageURL ?? 'https://m.poisk.vid.ru/img/icons/no_avatar.jpg'} alt={name} />
       <h6>{name}</h6>
       {isMe ?
