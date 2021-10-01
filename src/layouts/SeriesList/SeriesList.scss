@@ -1,8 +1,4 @@
 .series-list {
-  display: flex;
-  justify-content: start;
-  flex-direction: row;
-  flex-wrap: wrap;
   width: 192px;
 
   @media (min-width: 384px) {
@@ -16,4 +12,11 @@
   @media (min-width: 768px) {
     width: 768px;
   }
-}
+
+  &__container {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+ }

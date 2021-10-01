@@ -13,21 +13,21 @@ export const Search: FC<SearchProps> = ({
   className,
   ...props
 }) => {
-  className = 'input ' + className
+  className = 'search ' + className
   className += error ? ' error' : ''
 
   placeholder = placeholder ? placeholder : name
 
   return (
-    <label className="input-wrapper">
+    <label className="search-wrapper">
       <input
           className={className}
-          id={'input__' + name}
+          id={'search__' + name}
           name={name}
           placeholder={placeholder}
           {...props}
       />
-      <p className="input__error-text">{ error }</p>
+      <p className="search__error-text">{ error }</p>
     </label>
   )
 }

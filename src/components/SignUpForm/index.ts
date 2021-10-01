@@ -1,4 +1,4 @@
-import { SignUpForm, SignUpFormProps, SignUpFormValues } from "./SignUpForm";
+import { SignUpForm, SignUpFormProps } from "./SignUpForm";
 
 export default SignUpForm
-export type { SignUpFormProps, SignUpFormValues }
+export type { SignUpFormProps }
