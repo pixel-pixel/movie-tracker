@@ -5,15 +5,10 @@ import UserList from "../../layouts/UserList";
 import "./SearchUserPage.scss"
 
 export const SearchUserPage: FC = () => {
-  const { users } = useTSelector(s => s.usersGet)
-  const { getAllUsers } = useActions()
-  useEffect(() => {
-    getAllUsers()
-  }, [])
 
   return (
     <div className="search-user-page">
-      <UserList users={users}/>
+      <UserList />
     </div>
   )
 }

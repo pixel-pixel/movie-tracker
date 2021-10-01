@@ -1,18 +1,28 @@
+import { range } from "rxjs"
 import { Series } from "."
+import { Filter } from "../../common/intarfaces"
 import Serial from "./Series"
 
 const URL = 'https://api.tvmaze.com/'
 const searchSeriesURL = 'https://api.tvmaze.com/search/shows?q='
 const getSerialURL = 'https://api.tvmaze.com/shows/'
 
-async function searchSeries(name: string | null) {
-  if (!name) return []
+const seriesByPageURL = 'https://api.tvmaze.com/shows?page='
+const LIMIT = 40
 
-  const response = await fetch(searchSeriesURL + name)
-  const json: {show: Serial}[] = await response.json()
-  const seriesArr = json.map(el => el.show)
+async function searchSeries(...filters: Filter<Serial>[]) {
+  const res: Serial[] = []
 
-  return seriesArr
+  for (let i = 0; i < 230 && res.length !== LIMIT; i++) {
+    const response = await fetch(seriesByPageURL + i)
+    const jsonArr: Serial[] = await response.json()
+    jsonArr.every(s => {
+      if (filters.every( f => f(s) )) res.push(s)
+      return res.length !== LIMIT
+    })
+  }
+
+  return res
 }
 
 async  function getSerialById(id: number) {

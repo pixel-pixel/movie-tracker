@@ -1,35 +1,41 @@
-import React, { FC, HTMLAttributes, useState } from "react";
-import { User } from "../../common/intarfaces";
+import React, { FC, HTMLAttributes, useEffect, useState } from "react";
+import { Filter, User } from "../../common/intarfaces";
 import Search from "../../components/Search";
 import UserCard from "../../components/UserCard";
+import { useTSelector } from "../../hooks";
+import { useActions } from "../../hooks/useActions";
+import { nameFilter } from "../../tools/Filters";
 import "./UserList.scss"
 
 export interface UserListProps extends HTMLAttributes<HTMLDivElement> {
-  users: User[]
+  filters?: Filter<User>[]
 }
 
 export const UserList: FC<UserListProps> = ({
-  users,
+  filters = [],
   className,
   ...props
 }) => {
-  const [search, setSearch] = useState('')
-  const handleChange = (e: any) => setSearch(e.target.value)
-  const nameFilter = (u: User) => {
-    const n = u.name.toLowerCase()
-    const s = search.toLowerCase()
-    return n.includes(s)
-  }  
+  const { users } = useTSelector(s => s.search)
+  const { searchUsers } = useActions()
+  useEffect(() => {
+    searchUsers(...filters)
+  }, [])
+
+  const handleChange = (e: any) => {
+    const name: string = e.target.value
+    searchUsers(nameFilter(name), ...filters)
+  }
 
   className = 'user-list ' + className
 
   return (
     <div className={className} {...props}>
-      
-      {users.filter(nameFilter).map(u => (
+      <Search name="user-searche" onChange={handleChange} />
+
+      {users.map(u => (
         <UserCard user={u} />
       ))}
-      <Search name="user-searche" onChange={handleChange} />
     </div>
   )
 }

@@ -37,3 +37,13 @@ async (dispatch: Dispatch<UserAction>) => {
      dispatch({type: "FETCH_USER_ERROR", payload: error})
   }
 }
+
+export const addFriend = (me: User, userId: string) => 
+async () => {
+  await firebaseService.addFriend(me, userId)
+}
+
+export const removeFriend = (me: User, userId: string) => 
+async () => {
+  await firebaseService.removeFriend(me, userId)
+}

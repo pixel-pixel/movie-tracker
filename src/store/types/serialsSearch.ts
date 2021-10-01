@@ -1,30 +1,21 @@
-import { Serial, SerialFilter } from "../../common/intarfaces";
+import { Serial, User } from "../../common/intarfaces";
 
 export interface SerialsSearchState {
-  filter: SerialFilter | null
   series: Serial[]
+  actors: null
+  users: User[]
   loading: boolean
   error: any
 }
 
-export type SerialsSearchAction =
-  | AddFilterAction
-  | RemoveFilterAction
-  | SearchSerialsAction
+export type SearchAction =
+  | SerialsAction
   | SearchSerialsSuccessAction
-  | SearchSerialsErrorAction
+  | SearchUserSuccessAction
+  | SearchErrorAction
 
-interface AddFilterAction {
-  type: "ADD_FILTER"
-  payload: SerialFilter
-}
-
-interface RemoveFilterAction {
-  type: "REMOVE_FILTER"
-}
-
-interface SearchSerialsAction {
-  type: "SEARCH_SERIALS"
+interface SerialsAction {
+  type: "SEARCH"
 }
 
 interface SearchSerialsSuccessAction {
@@ -32,7 +23,12 @@ interface SearchSerialsSuccessAction {
   payload: Serial[]
 }
 
-interface SearchSerialsErrorAction {
-  type: "SEARCH_SERIALS_ERROR"
+interface SearchUserSuccessAction {
+  type: "SEARCH_USERS_SUCCESS"
+  payload: User[]
+}
+
+interface SearchErrorAction {
+  type: "SEARCH_ERROR"
   payload: any
 }
