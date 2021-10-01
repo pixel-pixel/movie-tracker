@@ -13,7 +13,7 @@ const SignUpPage: FC = () => {
   const { user, error, loading } = useTSelector(state => state.user)
   const { signUp } = useActions()
   useEffect(() => {
-    if (user) history.push('/home')
+    if (user) history.push('/news')
   }, [user])
 
   if (error) console.log(error)

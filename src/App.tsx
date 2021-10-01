@@ -18,25 +18,16 @@ function App() {
       <Route exact path="/sign-up" component={SignUpPage} />
       <Route exact path="/sign-in" component={SignInPage} />
     
-    
+      <Route path='/'>
         <Route path="/home" component={UserPage} />
         <Route path="/news" component={NewsPage} />
-        <Route path="/search">
-          {
-          //TODO use links
-        }
-          <PageChooser data={[
-            {label: 'Series', path: '/search/series'},
-            {label: 'Users', path: '/search/users'}
-          ]}/>
+        <Route exact path="/users" component={SearchUserPage} />
+        <Route exact path="/series" component={SearchSeriesPage} />
 
-          <Route exact path="/search/users" component={SearchUserPage} />
-          <Route path="/search" component={SearchSeriesPage} />
-        </Route>
-
-        <Route path="/serial/:id" component={SerialPage} />
+        <Route path="/series/:id" component={SerialPage} />
+        
         <MainBar /> 
-    
+      </Route>
     </Switch>
   );
 }
